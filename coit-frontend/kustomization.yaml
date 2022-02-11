@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - resources/coit-frontend-deployment.yaml
+  - resources/service-coit-frontend-lb.yaml
+  - resources/coit-frontend-cm.yaml
+
+buildMetadata: [managedByLabel, originAnnotations]
+commonLabels:
+  application: coit-frontend
+  webserver: nginx
+  location: mumbai
+
+patches:
+  - path: coit-frontend-deployment-patch.yaml
+
+namePrefix: customer1-

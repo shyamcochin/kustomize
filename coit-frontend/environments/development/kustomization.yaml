@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../resources
+
+patches:
+  - path: coit-frontend-deployment-patch.yaml
+
+configMapGenerator:
+- name: awsinfo
+  literals:
+  - S3BUCKET=s3://devbucket
+  - IAMROLE=development
+- name: properties
+  files:
+  - development.properties
+- name: properties-env
+  envs:
+  - development.properties
+
+secretGenerator:
+- name: db-secrets
+  envs: 
+  - secrets.env

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coit-frontend
+data:
+  COIT_BACKEND_URL: "http://10.10.10.10"
+  COIT_PYTHON_URL: "http://10.11.11.11"

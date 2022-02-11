@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment                                          # 1
+metadata:
+  name: coit-frontend
+spec:
+  replicas: 5                                             # 2
+  template:
+    spec:
+      containers:
+        - name: coit-frontend
+          env:
+          - name: S3_BUCKET
+            value: s3://coitbucketproduction

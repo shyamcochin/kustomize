@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment                                          # 1
+metadata:
+  name: coit-frontend
+spec:
+  replicas: 3                                             # 2
+  template:
+    spec:
+      volumes:
+        - name: properties-date
+          configMap:
+            name: properties
+      containers:
+        - name: coit-frontend
+          image: coitlearning/coit-frontend:v1
+          env:
+          - name: S3_BUCKET
+            valueFrom:
+              configMapKeyRef:
+                name: awsinfo
+                key: S3BUCKET
+          - name: DATABASE_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: properties-env
+                key: database_name
+          - name: DATABASE_USER
+            valueFrom:
+              configMapKeyRef:
+                name: properties-env
+                key: database_user
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-secrets
+                key: database_password
+          - name: API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: db-secrets
+                key: api_key
+          volumeMounts:
+          - name: properties-date
+            mountPath: /mnt/config
