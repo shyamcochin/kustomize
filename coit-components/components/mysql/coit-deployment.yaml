@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment                                          # 1
+metadata:
+  name: coit-frontend
+spec:
+  template:
+    spec:
+      containers:
+        - name: coit-frontend
+          env:
+          - name: MYSQL_PASSWORD
+            value: DEVOPS123

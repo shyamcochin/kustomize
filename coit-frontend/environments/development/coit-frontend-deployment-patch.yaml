@@ -39,6 +39,10 @@ spec:
               secretKeyRef:
                 name: db-secrets
                 key: api_key
+          - name: BACKEND_HOST
+            value: localhost
+          - name: BACKUP_PUBLIC_URL
+            value: localhost
           volumeMounts:
           - name: properties-date
             mountPath: /mnt/config

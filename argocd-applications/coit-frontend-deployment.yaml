@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: coit-frontend-development
+  namespace: argocd
+spec:
+  destination:
+    namespace: development
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: kustomize/environments/development
+    repoURL: git@github.com:Coit-IO/coit-frontend-repo.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

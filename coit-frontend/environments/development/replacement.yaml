@@ -1,0 +1,18 @@
+source:
+  group: ""
+  version: v1
+  kind: Service
+  name: coit-backend
+  fieldPath: metadata.name
+targets:
+  - select:
+      group: apps
+      version: v1
+      kind: Deployment
+    fieldPaths: 
+    - spec.template.spec.containers.[name=coit-frontend].env.[name=BACKEND_HOST].value
+  - reject:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: blablabla

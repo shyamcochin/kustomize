@@ -23,3 +23,6 @@ secretGenerator:
 - name: db-secrets
   envs: 
   - secrets.env
+
+replacements:
+  - path: replacement.yaml
