@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
 - ./coit-backend1-deployment.yaml
 - ./coit-backend1-service.yaml
-- ./nginx-pod.yaml
 
 images:
 - name: coitlearning/coit-backend1
