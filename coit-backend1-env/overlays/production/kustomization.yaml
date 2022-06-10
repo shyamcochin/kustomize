@@ -16,6 +16,6 @@ commonLabels:
 nameSuffix: -production
 replicas:
   - name: coit-backend1
-    count: 10
+    count: 5
 
 namespace: production
