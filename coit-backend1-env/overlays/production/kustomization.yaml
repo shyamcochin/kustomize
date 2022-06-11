@@ -7,7 +7,7 @@ resources:
 
 images:
   - name: coitlearning/coit-backend1
-    newTag: v11
+    newTag: v9.0
     newName: coitlearning/coit-backend1
 
 commonLabels:
